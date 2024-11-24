@@ -15,6 +15,15 @@ import { useRouter } from "next/navigation";
 
 function Feedback({ params }) {
   const [feedbackList, setFeedbackList] = useState();
+
+  const CalculateRating = () => {
+    let totalRating = 0;
+    feedbackList?.forEach((feedback, index) => {
+      totalRating += parseFloat(feedback.rating);
+    });
+    console.log(((totalRating / (5 * feedbackList?.length)) * 100).toFixed(2));
+    return ((totalRating / (5 * feedbackList?.length)) * 100).toFixed(2);
+  };
   const router = useRouter();
   useEffect(() => {
     GetFeedback();
@@ -34,8 +43,12 @@ function Feedback({ params }) {
     <div className="p-10">
       <h2 className="text-3xl font-bold text-green-500">Congratulation</h2>
       <h2 className="font-bold text-2xl">Here is your interview feedback</h2>
-      <h2 className="text-primary text-lg my-3">
-        Your overall interview rating: <strong>7/10</strong>
+      <h2
+        className={`${
+          CalculateRating() >= 75 ? "text-green-500" : "text-red-500"
+        } text-lg my-3`}
+      >
+        Your overall interview rating: <strong>{CalculateRating()}%</strong>
       </h2>
       <h2 className="text-sm text-gray-500">
         Find below interview question with correct answer, Your answer and

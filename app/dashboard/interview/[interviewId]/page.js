@@ -83,7 +83,7 @@ function Interview({ params }) {
           )}
         </div>
       </div>
-      <div className="flex justify-end items-end">
+      <div className="flex justify-center md:justify-end md:items-end mt-5 ">
         <Button
           onClick={() => {
             router.push(
