@@ -4,13 +4,14 @@ import { db } from "@/utils/db";
 import { MockInterview } from "@/utils/schema";
 import { eq } from "drizzle-orm";
 import { Lightbulb, WebcamIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 
 function Interview({ params }) {
   const [interviewData, setInterviewData] = useState();
   const [webCamEnabled, setWebcamEnabled] = useState(false);
-
+  const router = useRouter();
   useEffect(() => {
     console.log(params?.interviewId);
     GetInterviewDetails();
@@ -83,7 +84,15 @@ function Interview({ params }) {
         </div>
       </div>
       <div className="flex justify-end items-end">
-        <Button>Start Interview</Button>
+        <Button
+          onClick={() => {
+            router.push(
+              "/dashboard/interview/" + params.interviewId + "/start"
+            );
+          }}
+        >
+          Start Interview
+        </Button>
       </div>
     </div>
   );
