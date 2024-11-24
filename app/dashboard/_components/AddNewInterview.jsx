@@ -18,6 +18,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useUser } from "@clerk/nextjs";
 import moment from "moment/moment";
 import { db } from "@/utils/db";
+import { useRouter } from "next/navigation";
 
 function AddNewInterview() {
   const [openDialog, setOpenDialog] = useState(false);
@@ -27,6 +28,7 @@ function AddNewInterview() {
   const [loading, setLoading] = useState(false);
   const [jsonResponse, setJsonResponse] = useState([]);
   const { user } = useUser();
+  const router = useRouter();
 
   const onSubmit = async (event) => {
     setLoading(true);
@@ -73,9 +75,12 @@ function AddNewInterview() {
         error
       );
     }
+    if (resp) {
+      setOpenDialog(false);
+      setLoading(false);
+      router.push(`/dashboard/interview/${resp[0]?.mockId}`);
+    }
     // Close the dialog after form submission
-    setOpenDialog(false);
-    setLoading(false);
   };
 
   return (
