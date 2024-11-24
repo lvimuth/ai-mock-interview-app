@@ -47,54 +47,65 @@ function Feedback({ params }) {
 
   return (
     <div className="p-10">
-      <h2 className="text-3xl font-bold text-green-500">Congratulation</h2>
-      <h2 className="font-bold text-2xl">Here is your interview feedback</h2>
-      <h2
-        className={`${
-          CalculateRating() >= 75 ? "text-green-500" : "text-red-500"
-        } text-lg my-3`}
-      >
-        Your overall interview rating: <strong>{CalculateRating()}%</strong>
-      </h2>
-      <h2 className="text-sm text-gray-500">
-        Find below interview question with correct answer, Your answer and
-        feedback for improvement.
-      </h2>
-      {feedbackList &&
-        feedbackList.map((item, index) => (
-          <Collapsible key={index} className="mt-6">
-            <CollapsibleTrigger className="p-2 bg-secondary rounded-lg my-2 text-left flex justify-between w-full gap-7">
-              {item.question} <ChevronsUpDown className="h-5 w-5" />
-            </CollapsibleTrigger>
-            <CollapsibleContent>
-              <div className="flex flex-col gap-2 mb-6">
-                <h2
-                  className={` p-2 border rounded-lg ${
-                    item.rating >= 3 ? "text-green-500" : "text-red-500"
-                  }`}
-                >
-                  <strong>Rating: </strong>
-                  {item.rating}
-                </h2>
-                <h2
-                  className={` p-2 border rounded-lg ${
-                    item.rating >= 3
-                      ? "bg-green-50 text-green-600"
-                      : "bg-red-50 text-red-600"
-                  }`}
-                >
-                  <strong>Your Answer: </strong>
-                  {item.userAns}
-                </h2>
-                <h2 className="text-blue-500 bg-blue-50 p-2 border rounded-lg ">
-                  <strong>Feedback: </strong>
-                  {item.feedback}
-                </h2>
-              </div>
-            </CollapsibleContent>
-          </Collapsible>
-        ))}
-
+      {feedbackList.length == 0 ? (
+        <>
+          <h2 className="text-3xl font-bold text-green-500">Congratulation</h2>
+          <h2 className="font-bold text-2xl">
+            Here is your interview feedback
+          </h2>
+          <h2 className="font-bold text-xl text-gray-500">
+            No Interview Feedback Found
+          </h2>
+        </>
+      ) : (
+        <>
+          <h2
+            className={`${
+              CalculateRating() >= 75 ? "text-green-500" : "text-red-500"
+            } text-lg my-3`}
+          >
+            Your overall interview rating: <strong>{CalculateRating()}%</strong>
+          </h2>
+          <h2 className="text-sm text-gray-500">
+            Find below interview question with correct answer, Your answer and
+            feedback for improvement.
+          </h2>
+          {feedbackList &&
+            feedbackList.map((item, index) => (
+              <Collapsible key={index} className="mt-6">
+                <CollapsibleTrigger className="p-2 bg-secondary rounded-lg my-2 text-left flex justify-between w-full gap-7">
+                  {item.question} <ChevronsUpDown className="h-5 w-5" />
+                </CollapsibleTrigger>
+                <CollapsibleContent>
+                  <div className="flex flex-col gap-2 mb-6">
+                    <h2
+                      className={` p-2 border rounded-lg ${
+                        item.rating >= 3 ? "text-green-500" : "text-red-500"
+                      }`}
+                    >
+                      <strong>Rating: </strong>
+                      {item.rating}
+                    </h2>
+                    <h2
+                      className={` p-2 border rounded-lg ${
+                        item.rating >= 3
+                          ? "bg-green-50 text-green-600"
+                          : "bg-red-50 text-red-600"
+                      }`}
+                    >
+                      <strong>Your Answer: </strong>
+                      {item.userAns}
+                    </h2>
+                    <h2 className="text-blue-500 bg-blue-50 p-2 border rounded-lg ">
+                      <strong>Feedback: </strong>
+                      {item.feedback}
+                    </h2>
+                  </div>
+                </CollapsibleContent>
+              </Collapsible>
+            ))}
+        </>
+      )}
       <Button onClick={() => router.replace("/dashboard")}>Home</Button>
     </div>
   );
