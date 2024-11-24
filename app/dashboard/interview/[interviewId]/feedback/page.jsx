@@ -17,13 +17,19 @@ function Feedback({ params }) {
   const [feedbackList, setFeedbackList] = useState();
 
   const CalculateRating = () => {
-    let totalRating = 0;
-    feedbackList?.forEach((feedback, index) => {
-      totalRating += parseFloat(feedback.rating);
-    });
-    console.log(((totalRating / (5 * feedbackList?.length)) * 100).toFixed(2));
-    return ((totalRating / (5 * feedbackList?.length)) * 100).toFixed(2);
+    if (!feedbackList || feedbackList.length === 0) return "0.00";
+
+    const totalRating = feedbackList.reduce(
+      (sum, feedback) => sum + parseFloat(feedback.rating || 0),
+      0
+    );
+    const maxRating = 5 * feedbackList.length;
+    const percentageRating = ((totalRating / maxRating) * 100).toFixed(2);
+
+    console.log(percentageRating);
+    return percentageRating;
   };
+
   const router = useRouter();
   useEffect(() => {
     GetFeedback();

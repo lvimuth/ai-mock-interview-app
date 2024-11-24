@@ -67,7 +67,7 @@ function RecordAnsSection({
       mockInterviewQuestion[activeQuestionIndex]?.question +
       ",  User Anser:" +
       userAnswer +
-      ", Depends on question and user anser for give interview question. Please give the rating for answer and feedback as area of improvement if any. in Just 3 to 5 line to improve it in json format with rating field and feedback field";
+      ", Depends on question and user anser for give interview question. Please give the rating outof 5 for answer and feedback as area of improvement if any. in Just 3 to 5 line to improve it in json format with rating field and feedback field";
 
     const result = await chatSession.sendMessage(feedbackPrompt);
     const mockJsonResp = result.response
