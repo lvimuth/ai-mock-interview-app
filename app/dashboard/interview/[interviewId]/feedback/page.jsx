@@ -10,9 +10,12 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { ChevronsUpDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 function Feedback({ params }) {
   const [feedbackList, setFeedbackList] = useState();
+  const router = useRouter();
   useEffect(() => {
     GetFeedback();
   }, []);
@@ -40,7 +43,7 @@ function Feedback({ params }) {
       </h2>
       {feedbackList &&
         feedbackList.map((item, index) => (
-          <Collapsible key={index}>
+          <Collapsible key={index} className="mt-6">
             <CollapsibleTrigger className="p-2 bg-secondary rounded-lg my-2 text-left flex justify-between w-full gap-7">
               {item.question} <ChevronsUpDown className="h-5 w-5" />
             </CollapsibleTrigger>
@@ -64,14 +67,16 @@ function Feedback({ params }) {
                   <strong>Your Answer: </strong>
                   {item.userAns}
                 </h2>
-                <h2 className="text-green-500 bg-green-50 p-2 border rounded-lg ">
-                  <strong>Correct Answer: </strong>
-                  {item.correctAns}
+                <h2 className="text-blue-500 bg-blue-50 p-2 border rounded-lg ">
+                  <strong>Feedback: </strong>
+                  {item.feedback}
                 </h2>
               </div>
             </CollapsibleContent>
           </Collapsible>
         ))}
+
+      <Button onClick={() => router.replace("/dashboard")}>Home</Button>
     </div>
   );
 }
