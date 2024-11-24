@@ -39,7 +39,7 @@ function RecordAnsSection({
   }, [results]);
 
   useEffect(() => {
-    if (!isRecording) {
+    if (!isRecording && userAnswer.length > 10) {
       UpdateUserAnswer();
     }
     // if (userAnswer?.length < 10) {
@@ -114,12 +114,12 @@ function RecordAnsSection({
       <Button
         disabled={loading}
         variant="outline"
-        className=""
+        className="mb-10"
         onClick={StartStopRecording}
       >
         {" "}
         {isRecording ? (
-          <h2 className="text-red-500 flex gap-2 items-center">
+          <h2 className="text-red-500 flex gap-2 items-center ">
             <CircleStopIcon /> Stop Recording
           </h2>
         ) : (
@@ -128,7 +128,7 @@ function RecordAnsSection({
           </h2>
         )}
       </Button>
-      <Button onClick={() => console.log(userAnswer)}>Show User Answer</Button>
+      {/* <Button onClick={() => console.log(userAnswer)}>Show User Answer</Button> */}
     </div>
   );
 }
