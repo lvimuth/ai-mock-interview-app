@@ -47,7 +47,7 @@ function Feedback({ params }) {
 
   return (
     <div className="p-10">
-      {feedbackList.length == 0 ? (
+      {feedbackList?.length == 0 ? (
         <>
           <h2 className="text-3xl font-bold text-green-500">Congratulation</h2>
           <h2 className="font-bold text-2xl">
