@@ -1,6 +1,7 @@
 "use client";
 import { UserButton } from "@clerk/nextjs";
 import Image from "next/image";
+import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
@@ -28,13 +29,13 @@ function Header() {
   return (
     <div
       className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${
-        isScrolled
-          ? "bg-gray-50/80 backdrop-blur-md shadow-lg"
-          : "bg-gray-50"
+        isScrolled ? "bg-gray-50/80 backdrop-blur-md shadow-lg" : "bg-gray-50"
       }`}
     >
       <div className="flex p-4 items-center justify-between max-w-screen-xl mx-auto flex-col md:flex-row">
-        <Image src={"/logo.svg"} alt="logo" width={160} height={100} />
+        <Link href={"/"}>
+          <Image src={"/logo.svg"} alt="logo" width={160} height={100} />
+        </Link>
         <ul className="md:flex gap-6">
           {headerItems.map((item, index) => (
             <li
