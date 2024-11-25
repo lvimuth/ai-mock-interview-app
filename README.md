@@ -1,59 +1,86 @@
-# AI-Powered Note Taking App
+# AI Mock Interview App
 
-An AI-powered note-taking application that leverages advanced AI models to provide intelligent and organized note management. This project uses Gemini AI, FastAPI, and database integration to deliver a seamless user experience.
+An advanced AI-powered application designed to simulate mock interviews, provide real-time feedback, and enhance your interview preparation experience. Built with cutting-edge tools and frameworks to deliver a seamless and effective user experience.
 
 ## Features
 
-1. **AI-Generated Notes**: Create concise, meaningful notes from large text inputs.
-2. **Database Integration**: Store and retrieve user-generated notes securely.
-3. **Customizable**: Update schemas and adapt models as per requirements.
-4. **Efficiency**: The app uses optimized APIs to deliver fast and reliable performance.
+1. **AI-Driven Mock Interviews**: Get personalized, intelligent interview simulations tailored to your needs.
+2. **Real-Time Feedback**: Receive actionable insights to improve your responses.
+3. **Speech-to-Text Integration**: Transcribe and analyze your verbal responses in real-time.
+4. **Customizable Themes**: Choose themes and styles that suit your preferences.
+
+## Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org/) (v15.0.3)
+- **AI Integration**: [Google Generative AI](https://ai.google/)
+- **Database**: Serverless database with [Neon Database](https://neon.tech/)
+- **UI Components**: [Radix UI](https://www.radix-ui.com/) and Tailwind CSS
+- **State Management**: React (v18)
 
 ## Project Structure
 
-- `jsconfig.json`: Configures module resolution and paths.
-- `db.js`: Contains database connection and query logic.
-- `GeminiAIModel.js`: Includes AI model configuration and interaction methods.
-- `schema.js`: Defines the data schema used for note storage and retrieval.
+- **`package.json`**: Lists dependencies and scripts to run, build, and deploy the app.
+- **AI Tools**: Powered by generative AI for personalized responses.
+- **Styling**: Tailwind CSS with animation extensions for a modern UI.
 
-## How It Works
-
-1. **User Interaction**: Users input text or topics for which they want notes.
-2. **AI Processing**: The app processes the input using the Gemini AI model to generate structured notes.
-3. **Data Management**: Notes are stored in the database based on the schema defined in `schema.js`.
-4. **Output Delivery**: Users retrieve their notes efficiently via API endpoints.
-
-### Prerequisites
-
-- Node.js installed
-- Database server running
-- API keys or configuration for Gemini AI
-
-### Installation
+## Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/ai-mock-interview-app.git
    cd ai-mock-interview-app
    ```
+
 2. Install dependencies:
+
    ```bash
    npm install
    ```
-3. Configure environment variables for database and API connections.
 
-### Usage
+3. Configure environment variables:
+   - Create a `.env` file at the root of the project.
+   - Add the required keys for API access and database configuration.
 
-1. Start the server:
-   ```bash
-   npm start
-   ```
-2. Access the app through the designated URL.
+## Scripts
+
+- **Development**: Start the development server:
+
+  ```bash
+  npm run dev
+  ```
+
+- **Build**: Generate a production-ready build:
+
+  ```bash
+  npm run build
+  ```
+
+- **Start**: Launch the production server:
+
+  ```bash
+  npm start
+  ```
+
+- **Linting**: Check for code quality and linting errors:
+  ```bash
+  npm run lint
+  ```
+
+## How It Works
+
+1. **User Input**: Users answer questions verbally or through text inputs.
+2. **AI Analysis**: Responses are analyzed using Google Generative AI.
+3. **Feedback**: Tailored feedback is provided to enhance interview skills.
 
 ## Contribution
 
-Feel free to contribute by forking the repository, making changes, and submitting a pull request. Suggestions and feature requests are always welcome!
+Contributions are welcome! Please fork the repository, make changes, and submit a pull request.
 
 ## License
 
 This project is licensed under the MIT License.
+
+---
+
+Start preparing smarter for your interviews with the AI Mock Interview App today!
